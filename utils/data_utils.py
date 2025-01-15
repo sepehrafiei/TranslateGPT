@@ -20,7 +20,7 @@ def create_output(original_text, translation, context):
     """
     output = []
     # Check if there are equal number of translations as to samples
-    assert len(original_text)==len(translation), "Number of original texts does not equal the number of translated texts"
+    assert len(original_text)==len(translation), f"Number of original texts {len(original_text)} does not equal the number of translated texts{len(translation)}"
     for i,j in zip(original_text, translation):
         output.append({context.original_language: i, context.to: j})
     return output
@@ -70,5 +70,4 @@ def get_example(num_samples, context):
         return f"Example Input: {str(original)}\nExample Output: {output}"
     except Exception as e:
         print(f"An error occurred while extracting language: {e}")
-
 

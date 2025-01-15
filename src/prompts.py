@@ -71,5 +71,35 @@ class Prompt():
             f"{self.batch}"
         )
 
+        self.prompt5 = (
+             f"Translate the following text from {self.original_language} to {self.to}. "
+                f"You are a professional {self.original_language}-to-{self.to} translator with expertise in producing high-quality, grammatically accurate, and contextually appropriate translations. "
+                f"Ensure that the number of translations in the output matches the number of inputs, and that they are provided in the same order as the input. "
+                f"Return only the list of translations in the exact format: "
+                "{\"translation\": [\"translation1\", \"translation2\", ...]}"
+                "Translate the following:\n"
+                f"{self.batch}"
+        )
+
+        self.prompt6 = (
+            f"Translate the following text from {self.original_language} to {self.to}. Ensure the translation:\n"
+            "1. Captures the full meaning of the original text without being overly literal.\n"
+            "2. Uses fluent and natural expressions in the target language.\n"
+            "3. Maintains cultural references without unnecessary localization.\n"
+            "4. Preserves proper punctuation and grammar according to the conventions of the target language.\n\n"
+            f"Return only the list of translations in the exact format: "
+            "{\"translation\": [\"translation1\", \"translation2\", ...]}\n"
+            f"Here is an example: {example}\n"
+            "Translate the following:\n"
+            f"{self.batch}"
+        )
+
+        self.prompt7 = (
+            f"Translate the following text from {self.original_language} to {self.to}:\n"
+            f"{self.batch}\n"
+            f"Return only the list of translations in the exact format: "
+            "{\"translation\": [\"translation1\", \"translation2\", ...]}\n"
+        )
+
         self.selected_prompt = self.prompt1
 

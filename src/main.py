@@ -36,11 +36,12 @@ def translate(context, debug=False):
         translation_array = gpt_output_to_array(translation_string)
         translation.extend(translation_array)
         if debug:
-            print(f"Prompt: {prompt}\n\n"
-                  f"Batch Translation: {translation_string}\n")
+            print(f"Prompt: {prompt.selected_prompt}\n\n"
+                  f"{len(translation_array)} Batch Translation: {translation_string}\n")
 
 
     if debug:
+        print(f"Ref Count: {len(ref)}, Translation Count: {len(translation)}")
         for i, j in zip(ref, translation):
             print(f"Reference: {i}\nTranslation: {j}\n\n")
 
@@ -83,11 +84,19 @@ def english_to_spanish_3_5():
     Translate spanish to english using gpt3.5
     :return: None
     """
-    context = Context("english", "spanish", "gpt-3.5-turbo", 0.3, 96,10, 2)
+    context = Context("english", "spanish", "gpt-3.5-turbo", 0.3, 96,6, 2)
+    translate(context, True)
+
+
+def spanish_to_english_4o_small():
+    """
+    Translate spanish to english using gpt40
+    :return: None
+    """
+    context = Context("spanish", "english", "gpt-4o-mini", 0.3, 20,10, 2)
     translate(context)
 
-
-spanish_to_english_4o()
+english_to_spanish_4o()
 
 
 
